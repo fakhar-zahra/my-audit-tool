@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Audit Result</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      padding: 20px;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #ffd700;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    td {
+      padding: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    img {
+      display: block;
+      margin: 0 auto;
+      max-width: 80%;
+      border: 5px solid #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    }
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <h1>Audit Result</h1>
+
+  <h2>Screenshot</h2>
+  <img src="{{ url_for('static', filename='screenshot.png') }}" alt="Website Screenshot">
+
+  <h2>Alt Text Results</h2>
+  <table>
+    <tr><td>Total Images:</td><td>{{ results.alt_results.total_images }}</td></tr>
+    <tr><td>Missing Alt Count:</td><td>{{ results.alt_results.missing_alt_count }}</td></tr>
+    <tr>
+      <td>Missing Alt Images:</td>
+      <td>
+        {% if results.alt_results.missing_alt_images %}
+          <ul>
+            {% for img in results.alt_results.missing_alt_images %}
+              <li>{{ img }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          None
+        {% endif %}
+      </td>
+    </tr>
+  </table>
+
+  <h2>Favicon Result</h2>
+  <table>
+    <tr><td>Favicon Found:</td><td>{{ results.favicon_result.favicon_found }}</td></tr>
+    <tr><td>Favicon URL:</td><td>{{ results.favicon_result.favicon_url or "None" }}</td></tr>
+  </table>
+
+  <h2>Headings Result</h2>
+  <table>
+    <tr><td>H1:</td><td>{{ results.headings_result.h1 }}</td></tr>
+    <tr><td>H2:</td><td>{{ results.headings_result.h2 }}</td></tr>
+    <tr><td>H3:</td><td>{{ results.headings_result.h3 }}</td></tr>
+    <tr><td>H4:</td><td>{{ results.headings_result.h4 }}</td></tr>
+    <tr><td>H5:</td><td>{{ results.headings_result.h5 }}</td></tr>
+    <tr><td>H6:</td><td>{{ results.headings_result.h6 }}</td></tr>
+  </table>
+
+  <h2>Links Result</h2>
+  <table>
+    <tr><td>Total Links:</td><td>{{ results.links_result.total_links }}</td></tr>
+    <tr><td>Internal Links:</td><td>{{ results.links_result.internal_links }}</td></tr>
+    <tr><td>External Links:</td><td>{{ results.links_result.external_links }}</td></tr>
+  </table>
+
+  <h2>Open Graph Result</h2>
+  <table>
+    <tr><td>OG Title:</td><td>{{ results.og_result['og:title'] or "None" }}</td></tr>
+    <tr><td>OG Description:</td><td>{{ results.og_result['og:description'] or "None" }}</td></tr>
+    <tr><td>OG Image:</td><td>{{ results.og_result['og:image'] or "None" }}</td></tr>
+    <tr><td>OG URL:</td><td>{{ results.og_result['og:url'] or "None" }}</td></tr>
+  </table>
+
+  <h2>SEO Tags Result</h2>
+  <table>
+    <tr><td>Title:</td><td>{{ results.seo_result.title }}</td></tr>
+    <tr><td>Description:</td><td>{{ results.seo_result.description }}</td></tr>
+  </table>
+
+  <h2>Speed Result</h2>
+  <table>
+    <tr><td>Load Time (seconds):</td><td>{{ results.speed_result.load_time_seconds }}</td></tr>
+  </table>
+
+  <footer>
+    &copy; 2025 Your Audit Tool. All rights reserved.
+  </footer>
+</body>
+</html>

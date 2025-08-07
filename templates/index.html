@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Audit Tool</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #c471f5, #fa71cd);
+      color: white;
+    }
+    .container {
+      max-width: 500px;
+      margin: 100px auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 20px;
+      outline: none;
+    }
+    button {
+      padding: 10px 25px;
+      border-radius: 8px;
+      border: none;
+      background: rgba(255, 255, 255, 0.3);
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
+    }
+    footer {
+      margin-top: 50px;
+      background-color: #6a0dad;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Website Audit Tool</h1>
+    <form method="post">
+      <input type="text" name="url" placeholder="Enter website URL" required>
+      <br>
+      <button type="submit">Run Audit</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 My Audit Tool | Crafted with 💜
+  </footer>
+</body>
+</html>
+
